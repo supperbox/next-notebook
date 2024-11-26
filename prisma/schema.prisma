@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model note {
+  id         String  @id
+  title      String?
+  content    String?
+  authorId   String?
+  updateTime String?
+  // @default(now())
+  // user       user?    @relation(fields: [authorId], references: [id], map: "Note_authorId_fkey")
+
+  // @@index([authorId], map: "Note_authorId_fkey")
+}
+
+// model user {
+//   id       String @id
+//   username String
+//   password String
+//   note     note[]
+// }

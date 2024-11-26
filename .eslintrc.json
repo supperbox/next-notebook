@@ -1,3 +1,6 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "@next/next/no-img-element": "off" // 禁用 no-img-element 规则
+  }
 }
