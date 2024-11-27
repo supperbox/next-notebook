@@ -6,6 +6,8 @@ export default async function EditPage({ params }) {
   const { id: noteId } = await params;
   const note = await findNote(noteId);
 
+  console.log("/note/[id].js编辑页面", note, noteId);
+
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   await sleep(1000);
 

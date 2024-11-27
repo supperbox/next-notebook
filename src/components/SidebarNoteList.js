@@ -5,6 +5,9 @@ import SidebarNoteItem from "./SidebarNoteItem";
 
 export default async function NoteList() {
   const notes = await findNote();
+
+  console.log("sidebar查询所有笔记", notes);
+
   if (Object.entries(notes).length == 0) {
     return <div className="notes-empty">{"暂无笔记"}</div>;
   }

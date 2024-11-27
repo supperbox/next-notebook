@@ -6,10 +6,10 @@ import { newNote, updateNote, deleteNote } from "@/lib/prisma";
 export async function saveNote(formData) {
   let noteId = formData.get("noteId"); // 拿到表单数据
 
-  const data = JSON.stringify({
+  const data = {
     title: formData.get("title"),
     content: formData.get("body"),
-  });
+  };
 
   if (noteId) {
     await updateNote(noteId, data);
@@ -19,7 +19,6 @@ export async function saveNote(formData) {
     // revalidatePath("/", "layout");
     noteId = res; // 返回的uuid
   }
-  console.log(noteId, data);
   redirect("/note/" + noteId); // 跳转到对应页面
 }
 

@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 const prisma = new PrismaClient();
 
 export const newNote = async (data) => {
-  console.log("创建笔记", data);
   const uuid = Date.now().toString();
   let title = data.title;
   let content = data.content;
@@ -14,23 +13,29 @@ export const newNote = async (data) => {
       title,
       content,
       updateTime: dayjs().format("YYYY-MM-DD hh:mm:ss"),
+      authorId: data.authorId,
     },
   });
   return uuid;
 };
 
-export const findNote = async (id) => {
+// 查找笔记
+export const findNote = async (id, authorId) => {
   let res;
   if (!id) {
-    res = await prisma.note.findMany();
+    res = await prisma.note.findUnique({
+      where: {
+        authorId: authorId,
+      },
+    });
   } else {
     res = await prisma.note.findUnique({
       where: {
         id: id,
+        authorId: authorId,
       },
     });
   }
-  console.log("findNote 查询笔记结果", res);
   return res ?? [];
 };
 
@@ -55,6 +60,38 @@ export const updateNote = async (id, note) => {
     },
   });
   console.log("update更新笔记", id, note);
+  return res;
+};
 
+// 用户相关
+// 创建一个新用户
+const newUser = async (data) => {
+  await prisma.user.create({
+    data: {
+      id: Date.now().toString(), // 生成一个唯一的 ID
+      username: data.username,
+      password: data.password,
+    },
+  });
+};
+
+// 查找用户
+const findUser = async (data) => {
+  const res = await prisma.user.findUnique({
+    where: {
+      username: data.username, // 根据用户名和密码查找用户
+      password: data.password,
+    },
+  });
+  return res;
+};
+
+// 删除用户
+const deleteUser = async (id) => {
+  const res = await prisma.user.delete({
+    where: {
+      id: id, // 根据 ID 删除用户
+    },
+  });
   return res;
 };
