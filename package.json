@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^5.22.0",
+    "@prisma/client": "^6.0.0",
     "dayjs": "^1.11.13",
     "ioredis": "^5.4.1",
     "marked": "^15.0.0",

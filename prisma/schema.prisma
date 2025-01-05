@@ -12,13 +12,13 @@ model note {
   title      String?
   content    String?
   updateTime String?
-  author     User?   @relation(fields: [authorId], references: [id])
+  author     user?   @relation(fields: [authorId], references: [id])
   authorId   String?
 }
 
-model User {
+model user {
   id       String @id
-  username String
+  username String @unique
   password String
   notes    note[]
 }

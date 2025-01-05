@@ -23,7 +23,7 @@ export const newNote = async (data) => {
 export const findNote = async (id, authorId) => {
   let res;
   if (!id) {
-    res = await prisma.note.findUnique({
+    res = await prisma.note.findMany({
       where: {
         authorId: authorId,
       },
@@ -65,18 +65,19 @@ export const updateNote = async (id, note) => {
 
 // 用户相关
 // 创建一个新用户
-const newUser = async (data) => {
-  await prisma.user.create({
+export const newUser = async (data) => {
+  const res = await prisma.user.create({
     data: {
       id: Date.now().toString(), // 生成一个唯一的 ID
       username: data.username,
       password: data.password,
     },
   });
+  return res;
 };
 
 // 查找用户
-const findUser = async (data) => {
+export const findUser = async (data) => {
   const res = await prisma.user.findUnique({
     where: {
       username: data.username, // 根据用户名和密码查找用户
@@ -87,7 +88,7 @@ const findUser = async (data) => {
 };
 
 // 删除用户
-const deleteUser = async (id) => {
+export const deleteUser = async (id) => {
   const res = await prisma.user.delete({
     where: {
       id: id, // 根据 ID 删除用户
