@@ -25,12 +25,14 @@ export default async function Sidebar() {
           </section>
         </Link>
         <section className="sidebar-menu" role="menubar">
-          {/* SideSearchField */}
+          {/* 搜索栏 */}
           <SidebarSearchField></SidebarSearchField>
           <EditButton noteId={null}>新建</EditButton>
         </section>
         <nav>
+          {/* 加载骨架屏 */}
           <Suspense fallback={<NoteListSkeleton />}>
+            {/* 笔记简单列表 */}
             <SidebarNoteList />
           </Suspense>
         </nav>
