@@ -418,10 +418,10 @@ ul.notes-list {
   background: var(--white);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  height: 95%;
-  width: 95%;
   min-width: 400px;
   padding: 8%;
+  height: calc(100% - 10px);
+  margin: 0 10px 10px 0;
   overflow-y: auto;
 }
 .note--empty-state {

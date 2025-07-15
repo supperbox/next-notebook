@@ -7,15 +7,16 @@ export default function Note({ noteId, note }) {
 
   return (
     <div className="note">
-      <div className="note-header">
-        <h1 className="note-title">{title}</h1>
-        <div className="note-menu" role="menubar">
-          <small className="note-updated-at" role="status">
-            Last updated on {dayjs(updateTime).format("YYYY-MM-DD hh:mm:ss")}
-          </small>
-          <EditButton noteId={noteId}>编辑</EditButton>
+      <div className="flex justify-between items-center">
+        <div className="font-[700] text-[18px] mr-[100px]">
+          {"标题: " + title}
         </div>
+        <div className="text-[13px]" role="status">
+          Last updated on {dayjs(updateTime).format("YYYY-MM-DD hh:mm:ss")}
+        </div>
+        <EditButton noteId={noteId}>编辑</EditButton>
       </div>
+      <div className="my-[20px] text-[16px]">正文</div>
       <NotePreview>{content}</NotePreview>
     </div>
   );

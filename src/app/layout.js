@@ -5,14 +5,15 @@ import Header from "@/components/Header";
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <div className="container">
+      <body className="flex flex-col">
+        {/* <body className="flex flex-col"> */}
+        <div className="h-[100%] flex-1 flex flex-col">
           {/* 头部 */}
           <Header />
-          <div className="main">
+          <div className="mt-[20px] h-full flex flex-1">
             {/* 侧边栏 */}
-            <Sidebar />
-            <section className="col note-viewer">{children}</section>
+            <Sidebar className="h-full" />
+            <div className="flex-1 ml-[20px]">{children}</div>
           </div>
         </div>
       </body>

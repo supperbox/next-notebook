@@ -19,7 +19,7 @@ const allowedAttributes = Object.assign(
 
 export default function NotePreview({ children }) {
   return (
-    <div className="note-preview">
+    <div className="mt-[20px]">
       <div
         className="text-with-markdown"
         dangerouslySetInnerHTML={{

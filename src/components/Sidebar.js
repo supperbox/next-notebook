@@ -10,7 +10,7 @@ import SidebarSearchField from "./siderSearch";
 export default async function Sidebar() {
   return (
     <>
-      <section className="col sidebar">
+      <section className="sidebar">
         <Link href={"/"} className="link--unstyled">
           <section className="sidebar-header">
             <Image
