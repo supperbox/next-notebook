@@ -1,3 +1,5 @@
+// 加载用骨架屏
+
 export default function EditSkeleton() {
   return (
     <div

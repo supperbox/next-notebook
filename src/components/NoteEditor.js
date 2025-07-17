@@ -53,7 +53,7 @@ export default function NoteEditor({ noteId, initialTitle, initialBody }) {
         <div className="label label--preview" role="status">
           预览
         </div>
-        <h1 className="note-title">{title}</h1>
+        <h1 className="text-[16px] font-[700]">{title}</h1>
         <NotePreview>{body}</NotePreview>
       </div>
     </div>
