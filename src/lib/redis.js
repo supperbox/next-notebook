@@ -1,6 +1,22 @@
 import Redis from "ioredis";
 
-const redis = new Redis();
+// 使用环境变量连接 Redis（如果未设置，则使用默认本地连接）
+const redis = new Redis(process.env.REDIS_URL || undefined);
+
+// 捕获并记录连接错误，避免未处理的异常导致大量日志或进程异常
+redis.on("error", (err) => {
+  // 只打印警告，不抛出，生产中可以替换为更完善的监控/重试策略
+  // eslint-disable-next-line no-console
+  console.warn(
+    "[ioredis] connection error:",
+    err && err.message ? err.message : err
+  );
+});
+
+redis.on("connect", () => {
+  // eslint-disable-next-line no-console
+  console.log("[ioredis] connected");
+});
 
 const initialData = {
   1702459181837:
